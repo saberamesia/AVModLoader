@@ -18,6 +18,7 @@ Place `AVModLoader.DLL` and any mod DLLs in your Axiom Verge directory. Run `AVM
 
 ## Future Plans
 
-- Overriding existing game behavior
+- A more complete suite of hooks
 - No-code mods (for music, visual assets, etc.)
 - A modding API for common or painful tasks like making menus
+- Ability to override existing game behavior (maybe)
