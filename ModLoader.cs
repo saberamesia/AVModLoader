@@ -41,8 +41,12 @@ namespace OuterBeyond.Mod
         {
             var DLL = Assembly.LoadFile(filename);
             var modName = DLL.GetName().Name.Substring(3);
-            THDebug.Print(THLogPriority.INFO, $"Initializing mod {modName}, getting type {modName}.Mod");
             var modType = DLL.GetType($"{modName}.Mod");
+            if (modType == null)
+            {
+                return;
+            }
+
             var methods = modType.GetMethods();
             HashSet<string> methodOverrides = new HashSet<string>();
             foreach ( var method in methods )
@@ -65,7 +69,7 @@ namespace OuterBeyond.Mod
 
             DirectoryInfo d = new DirectoryInfo(searchDirectory);
 
-            FileInfo[] Files = d.GetFiles("Mod*.dll");
+            FileInfo[] Files = d.GetFiles("*.dll");
 
             foreach (FileInfo file in Files)
             {
